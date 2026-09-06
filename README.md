@@ -1,6 +1,6 @@
 # Özgür — Rust backend and systems
 
-I build and validate Rust software with a focus on backend services, systems programming, and applied automation.
+I build and validate Rust software with a focus on backend services, systems programming, and applied automation. My project notes prioritize reproducible commands, failure-path tests, and measured limitations over unsupported claims.
 
 ## Selected projects
 
@@ -8,7 +8,7 @@ I build and validate Rust software with a focus on backend services, systems pro
 - [deltasafe](https://github.com/rustfuture/deltasafe) — authenticated file-transfer prototype with bounded frames, integrity checks, and failure-path tests.
 - [RustHound](https://github.com/rustfuture/RustHound) — Rust log-analysis CLI with rule-based detections and source-context output.
 
-Each selected project includes reproducible setup instructions, CI checks, validation notes, and documented limitations.
+These are the currently verified public projects. Each selected project includes reproducible setup instructions, CI checks, validation notes, and documented limitations.
 
 ## Current focus
 
@@ -16,4 +16,4 @@ Each selected project includes reproducible setup instructions, CI checks, valid
 - Reliable testing, observability, and failure handling
 - Applied LLM systems with measurable evaluation
 
-Claims here are limited to implemented and verified work. New experiments will be added only after they have a reproducible demo and evaluation evidence.
+Private experiments are intentionally not listed until their source, evaluation, and publication review are complete. Claims here are limited to implemented and verified work; new projects will be added only after a reproducible demo and evaluation evidence exist.
