@@ -1,26 +1,32 @@
-# Özgür — Rust Backend, Systems & Applied LLM
+# Özgür — Rust backend & systems
 
-I build and validate software with a focus on high-performance Rust backend services, systems programming, and safe, bounded Applied LLM systems. My portfolio emphasizes reproducible execution, strict test coverage, transparent evaluation, and honest capability boundaries.
+I build command-line tools and backend services in Rust. My current work explores system monitoring, authenticated file transfer, and how to test the boundaries of LLM-assisted developer tools.
 
-## Core Portfolio (Main Showcases)
+## Public projects
 
-*(Note: The following projects are currently held in private repositories during final verification and publication review. They will be opened once validation is fully complete.)*
+### [grainx](https://github.com/rustfuture/grainx)
 
-- **rust-agent-runtime** — A deterministic, sandboxed execution runtime for LLM agents. Features true process isolation, streaming resource bounds, reproducible execution traces, idempotent retries, and offline evaluations.
-- **repository-intelligence** — A local source-code analytics and search engine. Implements an embedded inverted index with partial `git diff` synchronization, multi-model provider support (Agy, Ollama), and dual RAG/Analytics pipelines.
-- **grainx** — High-performance terminal and HTTP agent demonstrating clear observability, explicit network bounds, Criterion microbenchmarks, and transparent metrics export.
-- **deltasafe** — Authenticated file-transfer prototype focusing on systems security. Implements AES-256-GCM encryption, bounded framing constraints, memory-safe cryptographic boundaries, and failure-path resilience.
-- **searchoptservice** — Embedded high-performance product indexing backend using `sled`. Features precise inclusive-bounds binary querying and robust integration testing.
+A terminal system monitor with an optional HTTP metrics process and JSON/CSV export. The repository covers local collection, remote metrics, configuration, and the limits of its current platform verification.
 
-## Research & Auxiliary Projects
+[Quick start](https://github.com/rustfuture/grainx#quick-start) · [Architecture](https://github.com/rustfuture/grainx/blob/main/docs/architecture.md)
 
-- **model-adaptation-lab** — An offline, local MLX-based LLM adaptation experiment. Demonstrates structural instruction-following for compiler-error diagnoses using authored synthetic data, with strict metric boundaries (exact match vs. generalization).
-- **RustHound** — Rust log-analysis CLI leveraging rule-based detections and source-context output for structural auditing.
+### [deltasafe](https://github.com/rustfuture/deltasafe)
 
-## Current Focus
+An authenticated file-transfer prototype for a trusted LAN. The receiver verifies encrypted frames, file size, and a BLAKE3 digest before publishing a file without overwriting an existing destination. Its documented threat model explains what the protocol does **not** protect against.
 
-- Building resilient, memory-safe Rust backend infrastructure.
-- Orchestrating LLM systems with strict safety, evaluation, and execution bounds.
-- Eliminating untested abstractions in favor of observable, deterministic performance.
+[Usage](https://github.com/rustfuture/deltasafe#usage) · [Security boundaries](https://github.com/rustfuture/deltasafe#security-boundaries)
 
-*All listed projects include reproducible setup instructions, CI checks, validation notes, and explicitly documented limitations. No unverified capabilities are claimed.*
+### [RustHound](https://github.com/rustfuture/RustHound)
+
+A smaller log-analysis CLI with configurable string, regex, frequency, and correlation rules. Includes a sample log and rules for a reproducible first run.
+
+## Work in progress — private repositories
+
+These projects are not currently available for public code review:
+
+- **rust-agent-runtime:** persistent task state, bounded command execution, and explicit post-edit verification for a coding-agent prototype.
+- **repository-intelligence:** lexical code search and experimental LLM answers. Snapshot consistency and answer grounding remain areas of development.
+- **model-adaptation-lab:** a small local LoRA experiment on synthetic Rust-error examples. The recorded adapter did not improve held-out keyword coverage; this is a negative-result study, not a model-quality claim.
+- **searchoptservice:** an embedded product-search backend using sled.
+
+The public repositories are pre-1.0 projects. Their README files distinguish implemented behavior, tested scenarios, and remaining limitations.
