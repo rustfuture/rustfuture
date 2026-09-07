@@ -1,33 +1,35 @@
-# Özgür
+# rustfuture
 
-**Rust Backend · Systems Programming · Applied LLM**
+Rust backend, systems programming, and applied LLM experiments.
 
-I build Rust tools for monitoring systems, transferring files, and working with data. I'm also developing LLM-assisted developer tools, with a focus on controlled execution and evaluating whether their outputs are actually useful.
+This profile is a small, evidence-led portfolio. Public repositories focus on tools that can be inspected, built, and tested from their own documentation. Private research projects are described only at a high level until they are ready to be reviewed publicly.
 
-## Selected work
+## Public projects
 
-| Project | What it does | Engineering focus |
-| :--- | :--- | :--- |
-| **[grainx](https://github.com/rustfuture/grainx)** | Terminal system monitor with an HTTP metrics service and JSON/CSV export. | System telemetry, terminal interfaces, and local/remote operation. |
-| **[deltasafe](https://github.com/rustfuture/deltasafe)** | Authenticated directory-to-directory file transfer over a trusted LAN. | Bounded protocol frames, integrity checks, and publishing only verified files. |
-| **[RustHound](https://github.com/rustfuture/RustHound)** | Command-line log analysis using configurable detection rules. | Streaming input, pattern matching, and frequency/correlation rules. |
+| Project | What you can inspect | Main engineering themes |
+| --- | --- | --- |
+| [grainx](https://github.com/rustfuture/grainx) | A terminal system monitor with local CPU, memory, disk, network, process, and host information; an optional HTTP metrics service; and JSON/CSV export. | Rust systems programming, terminal UI, telemetry, and a small HTTP service. |
+| [deltasafe](https://github.com/rustfuture/deltasafe) | An authenticated directory-transfer prototype for a trusted LAN, with encrypted bounded frames, integrity verification, and non-overwrite file publication. | Protocol design, cryptographic boundaries, streaming I/O, and failure handling. |
+| [RustHound](https://github.com/rustfuture/RustHound) | A streaming log-analysis CLI with configurable string, regular-expression, frequency, and correlation rules plus console and JSON output. | Parsing, rule evaluation, CLI design, and incremental analysis. |
 
-### A closer look
+## Where to start
 
-- **grainx:** [Run the dashboard](https://github.com/rustfuture/grainx#quick-start) or explore the [module architecture](https://github.com/rustfuture/grainx/blob/main/docs/architecture.md).
-- **deltasafe:** Follow an [end-to-end transfer](https://github.com/rustfuture/deltasafe#usage) and read the [protocol's security boundaries](https://github.com/rustfuture/deltasafe#security-boundaries).
-- **RustHound:** Try the [sample log and rules](https://github.com/rustfuture/RustHound#quick-start).
+- [grainx quick start](https://github.com/rustfuture/grainx#quick-start) · [architecture](https://github.com/rustfuture/grainx/blob/main/docs/architecture.md)
+- [deltasafe usage](https://github.com/rustfuture/deltasafe#usage) · [security boundaries](https://github.com/rustfuture/deltasafe#security-boundaries)
+- [RustHound quick start](https://github.com/rustfuture/RustHound#quick-start)
 
-## In progress: applied LLM
+Each project README contains the supported setup, test commands, design notes, and known limitations. The projects are prototypes rather than claims of universal production readiness: for example, grainx's optional HTTP service is not an authenticated internet-facing service, and deltasafe is designed around a trusted-LAN boundary.
 
-Alongside my public Rust projects, I'm working on three private experiments:
+## Private applied-LLM work
 
-- **Agent runtime** — persistent task state, bounded tool execution, and explicit verification after code edits.
-- **Repository intelligence** — lexical code retrieval, incremental indexing, and source-referenced model answers.
-- **Model adaptation lab** — local LoRA experiments on synthetic Rust-error examples, comparing base-model and adapter outputs.
+The following work remains private and is not presented as a public release:
 
-These are development-stage projects, not public releases. The model-adaptation work currently documents a negative result rather than a demonstrated quality improvement.
+- **Agent runtime:** persistent task state, bounded subprocess/tool execution, structured model calls, and explicit verification after edits.
+- **Repository intelligence:** lexical code retrieval, incremental indexing, provider boundaries, and source-linked answers.
+- **Model adaptation lab:** local LoRA experiments on synthetic Rust-error data with a held-out evaluation. Current results are recorded as experimental, including cases where adaptation did not improve the baseline.
 
----
+## Working principles
 
-For setup instructions, tests, design decisions, and current limitations, start with the individual project READMEs.
+- Prefer reproducible commands and measured behavior over broad claims.
+- Document security, access, and deployment boundaries next to the feature they qualify.
+- Keep prototypes small enough to inspect, test, and explain.
