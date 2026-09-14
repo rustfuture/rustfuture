@@ -12,7 +12,7 @@ on every push to `main`, and has a tagged release you can check out.
 | Project | CI | Release | Tests | What you can inspect |
 | --- | --- | --- | --- | --- |
 | [grainx](https://github.com/rustfuture/grainx) | [![grainx CI](https://github.com/rustfuture/grainx/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/rustfuture/grainx/actions/workflows/ci.yml) | [v0.1.0](https://github.com/rustfuture/grainx/releases/tag/v0.1.0) | 82 passing | A terminal system monitor with local CPU, memory, disk, network, process, and host information; an optional HTTP metrics service; and JSON/CSV export. |
-| [deltasafe](https://github.com/rustfuture/deltasafe) | [![deltasafe CI](https://github.com/rustfuture/deltasafe/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/rustfuture/deltasafe/actions/workflows/ci.yml) | [v0.1.0](https://github.com/rustfuture/deltasafe/releases/tag/v0.1.0) | 29 passing | An authenticated directory-transfer tool for a trusted LAN, with encrypted bounded frames, integrity verification, and non-overwrite file publication. |
+| [deltasafe](https://github.com/rustfuture/deltasafe) | [![deltasafe CI](https://github.com/rustfuture/deltasafe/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/rustfuture/deltasafe/actions/workflows/ci.yml) | [v0.1.0](https://github.com/rustfuture/deltasafe/releases/tag/v0.1.0) | 30 passing | An authenticated directory-transfer tool for a trusted LAN, with encrypted bounded frames, integrity verification, and non-overwrite file publication. |
 | [RustHound](https://github.com/rustfuture/RustHound) | [![RustHound CI](https://github.com/rustfuture/RustHound/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/rustfuture/RustHound/actions/workflows/ci.yml) | [v0.1.0](https://github.com/rustfuture/RustHound/releases/tag/v0.1.0) | 12 passing | A streaming log-analysis CLI with configurable string, regular-expression, frequency, and correlation rules plus console and JSON output. |
 
 Each project states its own versioning policy: while the major version is `0`, the version number
@@ -24,6 +24,13 @@ Local reproduction for any project follows the same shape:
 cargo fmt --check
 cargo clippy --locked --all-targets -- -D warnings
 cargo test --locked
+```
+
+deltasafe's suite is serialized, because its loopback tests bind ephemeral ports and share process
+state; use the invocation its own README and CI use:
+
+```bash
+cargo test --locked -- --test-threads=1
 ```
 
 ## Where to start
