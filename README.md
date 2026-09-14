@@ -6,14 +6,17 @@ This profile is a small, evidence-led portfolio. Public repositories focus on to
 
 ## Public projects
 
-Each project builds from a committed lockfile, runs its own test suite, and is checked by GitHub
-Actions on every push to `main`.
+Each project builds from a committed lockfile, runs its own test suite, is checked by GitHub Actions
+on every push to `main`, and has a tagged release you can check out.
 
-| Project | CI | Tests | What you can inspect |
-| --- | --- | --- | --- |
-| [grainx](https://github.com/rustfuture/grainx) | [![grainx CI](https://github.com/rustfuture/grainx/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/rustfuture/grainx/actions/workflows/ci.yml) | 75 passing | A terminal system monitor with local CPU, memory, disk, network, process, and host information; an optional HTTP metrics service; and JSON/CSV export. |
-| [deltasafe](https://github.com/rustfuture/deltasafe) | [![deltasafe CI](https://github.com/rustfuture/deltasafe/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/rustfuture/deltasafe/actions/workflows/ci.yml) | 25 passing | An authenticated directory-transfer prototype for a trusted LAN, with encrypted bounded frames, integrity verification, and non-overwrite file publication. |
-| [RustHound](https://github.com/rustfuture/RustHound) | [![RustHound CI](https://github.com/rustfuture/RustHound/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/rustfuture/RustHound/actions/workflows/ci.yml) | 12 passing | A streaming log-analysis CLI with configurable string, regular-expression, frequency, and correlation rules plus console and JSON output. |
+| Project | CI | Release | Tests | What you can inspect |
+| --- | --- | --- | --- | --- |
+| [grainx](https://github.com/rustfuture/grainx) | [![grainx CI](https://github.com/rustfuture/grainx/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/rustfuture/grainx/actions/workflows/ci.yml) | [v0.1.0](https://github.com/rustfuture/grainx/releases/tag/v0.1.0) | 82 passing | A terminal system monitor with local CPU, memory, disk, network, process, and host information; an optional HTTP metrics service; and JSON/CSV export. |
+| [deltasafe](https://github.com/rustfuture/deltasafe) | [![deltasafe CI](https://github.com/rustfuture/deltasafe/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/rustfuture/deltasafe/actions/workflows/ci.yml) | [v0.1.0](https://github.com/rustfuture/deltasafe/releases/tag/v0.1.0) | 29 passing | An authenticated directory-transfer tool for a trusted LAN, with encrypted bounded frames, integrity verification, and non-overwrite file publication. |
+| [RustHound](https://github.com/rustfuture/RustHound) | [![RustHound CI](https://github.com/rustfuture/RustHound/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/rustfuture/RustHound/actions/workflows/ci.yml) | [v0.1.0](https://github.com/rustfuture/RustHound/releases/tag/v0.1.0) | 12 passing | A streaming log-analysis CLI with configurable string, regular-expression, frequency, and correlation rules plus console and JSON output. |
+
+Each project states its own versioning policy: while the major version is `0`, the version number
+describes scope rather than a compatibility promise, and a breaking change bumps the minor version.
 
 Local reproduction for any project follows the same shape:
 
