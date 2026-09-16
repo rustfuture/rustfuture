@@ -1,57 +1,54 @@
 # rustfuture
 
-Rust backend, systems programming, and applied LLM infrastructure.
+**Rust systems · Agent infrastructure · Applied LLM research**
 
-This profile is a small, evidence-led portfolio. Public repositories focus on tools that can be inspected, built, and tested from their own documentation. Private research projects are described only at a high level until they are ready to be reviewed publicly.
+*Reproducible experiments, explicit boundaries, measured behavior.*
 
-## Public projects
+![Rust](https://img.shields.io/badge/rust-1.85%2B-orange?style=flat-square)
+![Python](https://img.shields.io/badge/python-3.9%2B-blue?style=flat-square)
+![License: MIT](https://img.shields.io/badge/license-MIT-green?style=flat-square)
 
-Each project builds from a committed lockfile, runs its own test suite, is checked by GitHub Actions
-on every push to `main`, and has a tagged release you can check out.
+## Featured Research & Systems
 
-| Project | CI | Release | Tests | What you can inspect |
-| --- | --- | --- | --- | --- |
-| [grainx](https://github.com/rustfuture/grainx) | [![grainx CI](https://github.com/rustfuture/grainx/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/rustfuture/grainx/actions/workflows/ci.yml) | [v0.1.2](https://github.com/rustfuture/grainx/releases/tag/v0.1.2) | 82 passing | A terminal system monitor with local CPU, memory, disk, network, process, and host information; an optional loopback HTTP metrics service; and JSON/CSV export. |
-| [deltasafe](https://github.com/rustfuture/deltasafe) | [![deltasafe CI](https://github.com/rustfuture/deltasafe/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/rustfuture/deltasafe/actions/workflows/ci.yml) | [v0.1.2](https://github.com/rustfuture/deltasafe/releases/tag/v0.1.2) | 31 passing | An authenticated directory-transfer tool for a trusted LAN, with encrypted bounded frames, integrity verification, and non-overwrite file publication. |
-| [RustHound](https://github.com/rustfuture/RustHound) | [![RustHound CI](https://github.com/rustfuture/RustHound/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/rustfuture/RustHound/actions/workflows/ci.yml) | [v0.1.2](https://github.com/rustfuture/RustHound/releases/tag/v0.1.2) | 15 passing | A streaming log-analysis CLI with configurable string, regular-expression, frequency, and correlation rules plus console and valid JSON-array output. |
-| [Rust Agent Runtime](https://github.com/rustfuture/rust-agent-runtime) | [![Agent Runtime CI](https://github.com/rustfuture/rust-agent-runtime/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/rustfuture/rust-agent-runtime/actions/workflows/ci.yml) | [v0.1.1](https://github.com/rustfuture/rust-agent-runtime/releases/tag/v0.1.1) | 47 passing | Durable task state, bounded subprocess and provider execution, explicit post-edit verification, and independently tested coding-agent fixtures. |
+### [Rust Agent Runtime](https://github.com/rustfuture/rust-agent-runtime)
 
-Each project states its own versioning policy: while the major version is `0`, the version number
-describes scope rather than a compatibility promise, and a breaking change bumps the minor version.
+Durable, bounded execution for coding-agent experiments with explicit verification and constrained tool authority.
 
-Local reproduction for any project follows the same shape:
+[README / Quick Start](https://github.com/rustfuture/rust-agent-runtime#quick-start) · [Architecture](https://github.com/rustfuture/rust-agent-runtime/blob/main/docs/architecture.md) · [Evaluation Evidence](https://github.com/rustfuture/rust-agent-runtime#evaluation-evidence)
 
-```bash
-cargo fmt --check
-cargo clippy --locked --all-targets -- -D warnings
-cargo test --locked
-```
+### [Repository Intelligence](https://github.com/rustfuture/repository-intelligence)
 
-deltasafe's suite is serialized, because its loopback tests bind ephemeral ports and share process
-state; use the invocation its own README and CI use:
+Evidence-first repository retrieval in Rust with lexical, neural and hybrid search plus extractive source selection.
 
-```bash
-cargo test --locked -- --test-threads=1
-```
+[Architecture](https://github.com/rustfuture/repository-intelligence#architecture) · [Results](https://github.com/rustfuture/repository-intelligence#measured-results) · [Reproducibility](https://github.com/rustfuture/repository-intelligence#reproducibility)
 
-## Where to start
+### [RSI Experimental Framework](https://github.com/rustfuture/rsi-experimental-framework)
 
-- [grainx quick start](https://github.com/rustfuture/grainx#quick-start) · [architecture](https://github.com/rustfuture/grainx/blob/main/docs/architecture.md)
-- [deltasafe usage](https://github.com/rustfuture/deltasafe#usage) · [security boundaries](https://github.com/rustfuture/deltasafe#security-boundaries)
-- [RustHound quick start](https://github.com/rustfuture/RustHound#quick-start)
-- [Agent Runtime evaluation](https://github.com/rustfuture/rust-agent-runtime#evaluation-evidence) · [architecture](https://github.com/rustfuture/rust-agent-runtime/blob/main/docs/architecture.md)
+Controlled infrastructure for iterative model-guided candidate generation, validation, evaluation and selection. No general RSI or intelligence-improvement claim is made.
 
-Each project README contains the supported setup, test commands, design notes, and known limitations. The projects are prototypes rather than claims of universal production readiness: for example, grainx's optional HTTP service is not an authenticated internet-facing service, and deltasafe is designed around a trusted-LAN boundary.
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rustfuture/rsi-experimental-framework/blob/main/notebooks/rsi_open_weight_colab.ipynb) · [Experiment Status](https://github.com/rustfuture/rsi-experimental-framework#experiment-status) · [Results](https://github.com/rustfuture/rsi-experimental-framework#measured-results)
 
-## Private applied-LLM research
+### [RLT-RSI Experiment](https://github.com/rustfuture/rlt-rsi-experiment)
 
-The following work remains private and is not presented as a public release:
+Looped-transformer experiments with bounded **RSI-style iterative adaptation** and post-selection held-out evaluation.
 
-- **Repository intelligence:** lexical code retrieval, incremental indexing, provider boundaries, and source-linked answers.
-- **Model adaptation lab:** local LoRA experiments on synthetic Rust-error data with a held-out evaluation. Current results are recorded as experimental, including cases where adaptation did not improve the baseline.
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rustfuture/rlt-rsi-experiment/blob/main/notebooks/rlt_rsi_colab.ipynb) · [Research questions](https://github.com/rustfuture/rlt-rsi-experiment/blob/main/DESIGN.md#research-questions) · [RSI-style mode](https://github.com/rustfuture/rlt-rsi-experiment#rsi-style-iterative-adaptation)
 
-## Working principles
+### [Model Adaptation Lab](https://github.com/rustfuture/model-adaptation-lab)
 
-- Prefer reproducible commands and measured behavior over broad claims.
-- Document security, access, and deployment boundaries next to the feature they qualify.
-- Keep prototypes small enough to inspect, test, and explain.
+Reproducible model-adaptation experiments on Rust compiler-error explanations, including preserved negative results.
+
+[![Open validation in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rustfuture/model-adaptation-lab/blob/main/notebooks/validation_colab.ipynb) · [Negative-result report](https://github.com/rustfuture/model-adaptation-lab/blob/main/reports/negative-result.md) · [Correctness boundaries](https://github.com/rustfuture/model-adaptation-lab#correctness-levels)
+
+## Other Rust Projects
+
+- [grainx](https://github.com/rustfuture/grainx) — terminal system monitor with an optional loopback HTTP metrics service and JSON/CSV export.
+- [deltasafe](https://github.com/rustfuture/deltasafe) — authenticated file transfer for a trusted LAN, with bounded frames and verified file publication.
+- [RustHound](https://github.com/rustfuture/RustHound) — streaming log-analysis CLI with configurable pattern, frequency, and correlation rules.
+
+## Engineering Principles
+
+- Evidence over claims.
+- Reproducibility over screenshots.
+- Explicit boundaries over vague guarantees.
+- Negative results are still results.
