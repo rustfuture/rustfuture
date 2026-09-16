@@ -46,9 +46,8 @@ Reproducible model-adaptation experiments on Rust compiler-error explanations, i
 - [deltasafe](https://github.com/rustfuture/deltasafe) — authenticated file transfer for a trusted LAN, with bounded frames and verified file publication.
 - [RustHound](https://github.com/rustfuture/RustHound) — streaming log-analysis CLI with configurable pattern, frequency, and correlation rules.
 
-## Engineering Principles
+## Approach
 
-- Evidence over claims.
-- Reproducibility over screenshots.
-- Explicit boundaries over vague guarantees.
-- Negative results are still results.
+Experiments are documented with committed artifacts and reproducible commands, and system
+boundaries are stated explicitly rather than left implied. Negative and inconclusive results
+stay in the record when they are part of the evidence.
