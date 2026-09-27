@@ -12,7 +12,7 @@
 
 ### [Reflex Control](https://github.com/rustfuture/reflex-control)
 
-Calibrated System-1 control plane and policy engine in Rust for AI agent runtimes. Couples zero-cost deterministic checks with atomic semantic signals from TypeSafe Jev to eliminate routine frontier calls (69% autonomous coverage) while enforcing inviolable hard safety vetoes against dangerous operations.
+Calibrated System-1 control plane and policy engine in Rust for AI agent runtimes. Combines deterministic checks with semantic signals from TypeSafe Jev to decide when a routine step can proceed without a frontier model call, while enforcing hard safety vetoes on dangerous operations. Evaluation uses a held-out synthetic partition (v0.2.0).
 
 [README / Quick Start](https://github.com/rustfuture/reflex-control#quick-start) · [Architecture](https://github.com/rustfuture/reflex-control#workspace-architecture) · [Evaluation Benchmark](https://github.com/rustfuture/reflex-control#evaluation-benchmark--measured-results) · [Runnable Examples](https://github.com/rustfuture/reflex-control#runnable-examples)
 
