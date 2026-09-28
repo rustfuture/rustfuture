@@ -8,7 +8,7 @@ Everything here is experimental: research prototypes and small tools, tested on 
 
 ### [Reflex Control](https://github.com/rustfuture/reflex-control)
 
-Decides whether an AI task can finish on its own, retry, or escalate to a more expensive model. It combines fast local checks with a safety veto for risky actions. In one run on a synthetic 100-task held-out set it recorded 0/43 false accepts and 66% autonomous coverage.
+Decides whether an AI task can finish on its own, retry, or escalate to a more expensive model. It combines fast local checks with a safety veto for risky actions. In one run on a synthetic 100-task held-out set it missed none of the 31 tasks that needed escalation (a rules-only baseline missed 23) and made no false accepts, while handling 66% of tasks autonomously.
 
 [Quick Start](https://github.com/rustfuture/reflex-control#quick-start) · [Architecture](https://github.com/rustfuture/reflex-control#workspace-architecture) · [Evaluation](https://github.com/rustfuture/reflex-control#evaluation-benchmark--measured-results) · [Examples](https://github.com/rustfuture/reflex-control#runnable-examples)
 
@@ -20,13 +20,13 @@ Runs automated coding tasks with language models under timeouts, command allowli
 
 ### [Repository Intelligence](https://github.com/rustfuture/repository-intelligence)
 
-Searches local code and answers questions by quoting exact source lines instead of generating prose. Supports text, hash-embedding, and local neural-model search over a portable index.
+Searches local code and returns verbatim source lines for a question instead of generating prose. Every accepted quote matched the source, but relevance is not guaranteed: the recorded 42-question run had 12 false accepts. Supports text, hash-embedding, and local neural-model search over a saved index.
 
 [Architecture](https://github.com/rustfuture/repository-intelligence#architecture) · [Results](https://github.com/rustfuture/repository-intelligence#measured-results) · [Reproducibility](https://github.com/rustfuture/repository-intelligence#reproducibility)
 
 ### [RSI Experimental Framework](https://github.com/rustfuture/rsi-experimental-framework)
 
-Tests repeated self-modification on a small problem: improving keyword rules for text classification through generate, check, and select rounds. Held-out data is measured once, after selection ends. No claim beyond this synthetic setup.
+Tests an iterative propose, validate and select loop that improves keyword rules for text classification on a small synthetic dataset (32 sentences). Held-out data is scored once, after selection ends. It makes no claim beyond that toy setup.
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rustfuture/rsi-experimental-framework/blob/main/notebooks/rsi_open_weight_colab.ipynb) · [Experiment Status](https://github.com/rustfuture/rsi-experimental-framework#experiment-status) · [Results](https://github.com/rustfuture/rsi-experimental-framework#measured-results)
 
@@ -38,7 +38,7 @@ Compares standard models with models that reuse one layer several times, on deci
 
 ### [Model Adaptation Lab](https://github.com/rustfuture/model-adaptation-lab)
 
-Trains and checks small text models that explain Rust compiler errors, using LoRA fine-tuning on Apple Silicon. Compares against simple rule-based baselines and keeps the recorded negative result: the adapted model showed no gain.
+Tests whether LoRA fine-tuning on Apple Silicon helps one small model (Qwen2.5-Coder-1.5B) explain Rust compiler errors, using a 12-record dataset and one rule-based baseline. The single recorded run showed no gain, and that negative result is kept.
 
 [![Open validation in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rustfuture/model-adaptation-lab/blob/main/notebooks/validation_colab.ipynb) · [Negative-result report](https://github.com/rustfuture/model-adaptation-lab/blob/main/reports/negative-result.md) · [Correctness levels](https://github.com/rustfuture/model-adaptation-lab#correctness-levels)
 
