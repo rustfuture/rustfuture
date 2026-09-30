@@ -20,33 +20,33 @@ Runs automated coding tasks with language models under timeouts, command allowli
 
 ### [Repository Intelligence](https://github.com/rustfuture/repository-intelligence)
 
-Searches local code and returns verbatim source lines for a question instead of generating prose. Every accepted quote matched the source, but relevance is not guaranteed: the recorded 42-question run had 12 false accepts. Supports text, hash-embedding, and local neural-model search over a saved index.
+Searches local code and returns verbatim source lines for a question instead of generating prose. Every accepted quote matched the source, but relevance is not guaranteed: across three recorded runs of a 42-question set, false accepts ranged from 8 to 12. Supports text, hash-embedding, and local neural-model search over a saved index.
 
 [Architecture](https://github.com/rustfuture/repository-intelligence#architecture) · [Results](https://github.com/rustfuture/repository-intelligence#measured-results) · [Reproducibility](https://github.com/rustfuture/repository-intelligence#reproducibility)
 
 ### [RSI Experimental Framework](https://github.com/rustfuture/rsi-experimental-framework)
 
-Tests an iterative propose, validate and select loop that improves keyword rules for text classification on a small synthetic dataset (32 sentences). Held-out data is scored once, after selection ends. It makes no claim beyond that toy setup.
+Tests an iterative propose, validate and select loop that improves keyword rules for text classification on a small synthetic dataset (32 sentences). Held-out data is scored only after selection ends. It makes no claim beyond that toy setup.
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rustfuture/rsi-experimental-framework/blob/main/notebooks/rsi_open_weight_colab.ipynb) · [Experiment Status](https://github.com/rustfuture/rsi-experimental-framework#experiment-status) · [Results](https://github.com/rustfuture/rsi-experimental-framework#measured-results)
 
 ### [RLT-RSI Experiment](https://github.com/rustfuture/rlt-rsi-experiment)
 
-Compares standard models with models that reuse one layer several times, on deciding whether a binary sequence has an odd or even number of ones. Checks whether training on short sequences carries over to longer ones, and includes a bounded search over how many times the layer repeats.
+Compares standard models with models that reuse one layer several times, on deciding whether a binary sequence has an odd or even number of ones. Checks whether training on short sequences carries over to longer ones, and includes a bounded search over how many times the layer repeats. In the committed runs none of the models learns the task: accuracy stays near chance.
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rustfuture/rlt-rsi-experiment/blob/main/notebooks/rlt_rsi_colab.ipynb) · [Research questions](https://github.com/rustfuture/rlt-rsi-experiment/blob/main/DESIGN.md#research-questions) · [Iterative adaptation](https://github.com/rustfuture/rlt-rsi-experiment#rsi-style-iterative-adaptation)
 
 ### [Model Adaptation Lab](https://github.com/rustfuture/model-adaptation-lab)
 
-Tests whether LoRA fine-tuning on Apple Silicon helps one small model (Qwen2.5-Coder-1.5B) explain Rust compiler errors, using a 12-record dataset and one rule-based baseline. The single recorded run showed no gain, and that negative result is kept.
+Tests whether LoRA fine-tuning on Apple Silicon helps one small model (Qwen2.5-Coder-1.5B) explain Rust compiler errors, using a 12-record dataset and one rule-based baseline. The single recorded run showed no gain, and the hand-written rule baseline scored higher on exact strategy match (1/3 vs 0/3); that negative result is kept.
 
 [![Open validation in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rustfuture/model-adaptation-lab/blob/main/notebooks/validation_colab.ipynb) · [Negative-result report](https://github.com/rustfuture/model-adaptation-lab/blob/main/reports/negative-result.md) · [Correctness levels](https://github.com/rustfuture/model-adaptation-lab#correctness-levels)
 
 ## Smaller Rust tools
 
-- [deltasafe](https://github.com/rustfuture/deltasafe): sends files between computers on a local network and verifies each file arrived unchanged.
+- [deltasafe](https://github.com/rustfuture/deltasafe): sends files over a local network and rejects any file whose checksum does not match; tested on loopback only.
 - [grainx](https://github.com/rustfuture/grainx): terminal dashboard for CPU, memory, disk, network, and processes, with a local HTTP metrics endpoint.
-- [RustHound](https://github.com/rustfuture/RustHound): reads log files and reports lines that match rules, repeated errors, or event sequences.
+- [RustHound](https://github.com/rustfuture/RustHound): reads log files and reports lines that match rules, bursts of repeated errors, or event sequences.
 
 ## Approach
 
