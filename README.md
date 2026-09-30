@@ -24,6 +24,10 @@ Searches local code and returns verbatim source lines for a question instead of 
 
 [Architecture](https://github.com/rustfuture/repository-intelligence#architecture) · [Results](https://github.com/rustfuture/repository-intelligence#measured-results) · [Reproducibility](https://github.com/rustfuture/repository-intelligence#reproducibility)
 
+## Research experiments
+
+Small, controlled experiments on synthetic or tiny datasets. Results are reported as found, including null and negative ones.
+
 ### [RSI Experimental Framework](https://github.com/rustfuture/rsi-experimental-framework)
 
 Tests an iterative propose, validate and select loop that improves keyword rules for text classification on a small synthetic dataset (32 sentences). Held-out data is scored only after selection ends. It makes no claim beyond that toy setup.
@@ -47,6 +51,8 @@ Tests whether LoRA fine-tuning on Apple Silicon helps one small model (Qwen2.5-C
 - [deltasafe](https://github.com/rustfuture/deltasafe): sends files over a local network and rejects any file whose checksum does not match; tested on loopback only.
 - [grainx](https://github.com/rustfuture/grainx): terminal dashboard for CPU, memory, disk, network, and processes, with a local HTTP metrics endpoint.
 - [RustHound](https://github.com/rustfuture/RustHound): reads log files and reports lines that match rules, bursts of repeated errors, or event sequences.
+
+<a href="https://github.com/rustfuture/RustHound#quick-start"><img src="https://github.com/rustfuture/RustHound/raw/main/docs/images/sample-run.svg" alt="RustHound console output on the bundled sample log: eight CRITICAL and HIGH detections" width="720"></a>
 
 ## Approach
 
