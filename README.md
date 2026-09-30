@@ -8,7 +8,7 @@ Everything here is experimental: research prototypes and small tools, tested on 
 
 ### [Reflex Control](https://github.com/rustfuture/reflex-control)
 
-Decides whether an AI task can finish on its own, retry, or escalate to a more expensive model. It combines fast local checks with a safety veto for risky actions. In one run on a synthetic 100-task held-out set it missed none of the 31 tasks that needed escalation (a rules-only baseline missed 23) and made no false accepts, while handling 66% of tasks autonomously.
+Decides whether an AI task can finish on its own, retry, or escalate to a more expensive model. It combines fast local checks with a safety veto for risky actions. In one run on a synthetic 100-task held-out set it missed none of the 31 tasks that needed escalation (the strongest baseline missed 3) and made no false accepts, while handling 66% of tasks autonomously.
 
 [Quick Start](https://github.com/rustfuture/reflex-control#quick-start) · [Architecture](https://github.com/rustfuture/reflex-control#workspace-architecture) · [Evaluation](https://github.com/rustfuture/reflex-control#evaluation-benchmark--measured-results) · [Examples](https://github.com/rustfuture/reflex-control#runnable-examples)
 
