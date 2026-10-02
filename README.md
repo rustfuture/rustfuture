@@ -1,6 +1,6 @@
 # Hi, I'm Murat
 
-I build tools in Rust that keep AI coding agents in check: the boring checks that stop an agent from touching your secrets or calling a task done while the tests fail. I also run small model experiments and publish the results even when they don't work.
+I build tools that keep AI coding agents in check: the boring checks that stop an agent from touching your secrets or calling a task done while the tests fail. I also run small model experiments and publish the results even when they don't work.
 
 ## Reflex Control
 
