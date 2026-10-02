@@ -42,7 +42,10 @@ def headings(text):
 def main():
     readme = Path(__file__).resolve().parents[1] / "README.md"
     text = readme.read_text(encoding="utf-8")
-    urls = sorted(set(re.findall(r"\]\((https://[^)]+)\)", text) + re.findall(r'href="(https://[^"]+)"', text)))
+    urls = set(re.findall(r"\]\((https://[^)]+)\)", text) + re.findall(r'href="(https://[^"]+)"', text))
+    # The official badge is an image; validate its notebook destination below.
+    urls.discard("https://colab.research.google.com/assets/colab-badge.svg")
+    urls = sorted(urls)
     images = re.findall(r'<img\s+[^>]*src="([^"]+)"', text)
     if len(images) != 9 or len(set(images)) != 9:
         raise ValueError("Profile must contain nine distinct project images")
@@ -62,7 +65,12 @@ def main():
     for url in urls:
         parsed = urlparse(url)
         parts = parsed.path.strip("/").split("/")
-        if parsed.netloc != "github.com" or len(parts) < 2 or parts[0] != "rustfuture":
+        colab = parsed.netloc == "colab.research.google.com" and parts[:2] == ["github", "rustfuture"]
+        if colab:
+            parts = parts[1:]
+            if len(parts) < 5 or parts[2:4] != ["blob", "main"] or not parts[-1].endswith(".ipynb"):
+                raise ValueError(f"Unsupported Colab notebook: {url}")
+        if (parsed.netloc != "github.com" and not colab) or len(parts) < 2 or parts[0] != "rustfuture":
             raise ValueError(f"Unsupported profile link: {url}")
         repo = parts[1]
         repos.add(repo)
