@@ -47,8 +47,8 @@ def main():
     urls.discard("https://colab.research.google.com/assets/colab-badge.svg")
     urls = sorted(urls)
     images = re.findall(r'<img\s+[^>]*src="([^"]+)"', text)
-    if not images or len(set(images)) != len(images):
-        raise ValueError("Profile images must be present and distinct")
+    if len(set(images)) != len(images):
+        raise ValueError("Profile images must be distinct")
     for image in images:
         path = (readme.parent / image).resolve()
         if not path.is_relative_to(readme.parent.resolve()):

@@ -1,65 +1,38 @@
-# rustfuture
+# Hi, I'm Murat
 
-I build tools and guardrails for AI coding agents and small local Rust utilities, and run model experiments in Rust and Python.
+I build tools in Rust that keep AI coding agents in check: the boring checks that stop an agent from touching your secrets or calling a task done while the tests fail. I also run small model experiments and publish the results even when they don't work.
 
-These are experimental projects. Each repository documents its run instructions, tests and limitations.
+## Reflex Control
 
-Currently: safety gates for coding agents. Reflex Control 0.4.0 hooks into Claude Code, Cursor, Codex CLI and git pre-commit; adapters for OpenCode, Kilo Code, Cline and pi are on `main`.
-
-Try Reflex Control without installing Rust (macOS or Linux):
+Reflex Control is my main project: a Rust CLI that plugs into Claude Code, Cursor and Codex CLI as a hook (more agents on main).
+- Blocks writes to files you protect (like `.env` or `secrets/**`).
+- Asks before risky shell commands (like a force push).
+- Runs your tests at the end of a turn when the agent says it is done, sending failures back to the agent a limited number of times.
 
 ```sh
 curl -fsSL https://raw.githubusercontent.com/rustfuture/reflex-control/main/install.sh | sh
 export PATH="$HOME/.local/bin:$PATH"
-reflex demo verifier-gate
+reflex demo agent
 ```
 
-On Windows, use the [PowerShell installer](https://github.com/rustfuture/reflex-control/blob/main/install.ps1).
+Run `reflex install` to launch the interactive setup wizard.
 
-<table>
-<tr>
-<td width="33%"><a href="https://github.com/rustfuture/reflex-control"><img src="assets/projects/reflex-control.png" alt="Reflex Control decides whether an AI task can finish on its own, retry, or escalate to an expensive reasoning model." width="280"></a></td>
-<td width="33%"><a href="https://github.com/rustfuture/rust-agent-runtime"><img src="assets/projects/rust-agent-runtime.png" alt="Rust Agent Runtime executes automated coding tasks using language models while enforcing execution timeouts, command restrictions, and verification tests." width="280"></a></td>
-<td width="33%"><a href="https://github.com/rustfuture/repository-intelligence"><img src="assets/projects/repository-intelligence.png" alt="Repository Intelligence searches local code and returns verbatim source lines for a question instead of generating prose; relevance is not guaranteed." width="280"></a></td>
-</tr>
-</table>
+![Reflex Control blocking a coding agent](assets/demo/reflex-agent.gif)
 
-## Coding tools
+[Repository](https://github.com/rustfuture/reflex-control) · [Design](https://github.com/rustfuture/reflex-control/blob/main/docs/architecture.md) · [Evaluation](https://github.com/rustfuture/reflex-control#evaluation-benchmark--measured-results)
 
-### [Reflex Control](https://github.com/rustfuture/reflex-control)
+## Other tools I built
 
-Decides when an automated coding step should finish, retry or escalate, using local checks and a safety veto.
+- [Rust Agent Runtime](https://github.com/rustfuture/rust-agent-runtime): runs coding tasks with command allowlists, timeouts and required verification, and records task state in an append-only log.
+- [Repository Intelligence](https://github.com/rustfuture/repository-intelligence): searches local code and answers with exact source lines instead of prose; works offline. Quotes are verbatim; relevance is not guaranteed.
+- [grainx](https://github.com/rustfuture/grainx): displays CPU, memory, disk, network and processes in the terminal; can share readings over a local HTTP service and export JSON/CSV.
+- [deltasafe](https://github.com/rustfuture/deltasafe): sends files between computers on the same local network and checks that each file arrived unchanged.
+- [RustHound](https://github.com/rustfuture/RustHound): reads log files and reports lines that match rules or look unusual.
 
-![Reflex Control mapping four task results to Accept, Retry and Escalate](assets/demo/reflex-runtime-gate.gif)
+## Experiments, including the ones that didn't work
 
-[Run the demo](https://github.com/rustfuture/reflex-control#quick-start) · [Design](https://github.com/rustfuture/reflex-control/blob/main/docs/architecture.md) · [Evaluation](https://github.com/rustfuture/reflex-control#evaluation-benchmark--measured-results)
+- [Model Adaptation Lab](https://github.com/rustfuture/model-adaptation-lab): I tried LoRA fine-tuning on a small model (Qwen2.5-Coder-1.5B) to explain Rust compiler errors; the recorded run showed no gain ([report](https://github.com/rustfuture/model-adaptation-lab/blob/main/reports/negative-result.md)).
+- [RLT-RSI Experiment](https://github.com/rustfuture/rlt-rsi-experiment): I tested reusing model layers in a loop on a sequence parity task; the runs stayed at chance level.
+- [RSI Experimental Framework](https://github.com/rustfuture/rsi-experimental-framework): a loop that proposes and keeps keyword rules for text classification on a small synthetic dataset.
 
-### [Rust Agent Runtime](https://github.com/rustfuture/rust-agent-runtime)
-
-Runs coding tasks with command allowlists, timeouts and required verification; task state is recorded in an append-only log.
-
-[Try the task lifecycle](https://github.com/rustfuture/rust-agent-runtime#quick-start) · [Design](https://github.com/rustfuture/rust-agent-runtime/blob/main/docs/architecture.md) · [Evaluation](https://github.com/rustfuture/rust-agent-runtime#evaluation-evidence)
-
-### [Repository Intelligence](https://github.com/rustfuture/repository-intelligence)
-
-Searches local code and returns exact source lines. Quotes match the source; relevance is not guaranteed.
-
-[Try offline search](https://github.com/rustfuture/repository-intelligence#quick-start) · [Design](https://github.com/rustfuture/repository-intelligence/blob/main/docs/architecture.md) · [Results](https://github.com/rustfuture/repository-intelligence#measured-results)
-
-## Model experiments
-
-| Project | Question and recorded scope | Explore |
-|---|---|---|
-| [RSI Experimental Framework](https://github.com/rustfuture/rsi-experimental-framework) | Propose and select keyword-rule changes on synthetic text; held-out data is scored after selection. | [Run](https://github.com/rustfuture/rsi-experimental-framework#quick-start) · [Results](https://github.com/rustfuture/rsi-experimental-framework#measured-results) · [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rustfuture/rsi-experimental-framework/blob/main/notebooks/rsi_open_weight_colab.ipynb) |
-| [RLT-RSI Experiment](https://github.com/rustfuture/rlt-rsi-experiment) | Test repeated model layers on sequence parity; committed runs stayed near chance. | [Run](https://github.com/rustfuture/rlt-rsi-experiment#quick-start) · [Results](https://github.com/rustfuture/rlt-rsi-experiment#what-the-committed-results-show) · [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rustfuture/rlt-rsi-experiment/blob/main/notebooks/rlt_rsi_colab.ipynb) |
-| [Model Adaptation Lab](https://github.com/rustfuture/model-adaptation-lab) | Test LoRA for Rust compiler explanations; the recorded run showed no gain. | [Run](https://github.com/rustfuture/model-adaptation-lab#quick-start) · [Report](https://github.com/rustfuture/model-adaptation-lab/blob/main/reports/negative-result.md) · [![Open validation in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rustfuture/model-adaptation-lab/blob/main/notebooks/validation_colab.ipynb) |
-
-## Local Rust tools
-
-| Tool | First use |
-|---|---|
-| [deltasafe](https://github.com/rustfuture/deltasafe) | [Transfer a file between two local terminals](https://github.com/rustfuture/deltasafe#quick-start); tested over loopback. |
-| [grainx](https://github.com/rustfuture/grainx) | [Open a system dashboard or export JSON/CSV](https://github.com/rustfuture/grainx#quick-start). |
-| [RustHound](https://github.com/rustfuture/RustHound) | [Analyze the bundled sample log](https://github.com/rustfuture/RustHound#quick-start). |
-
-Questions and suggestions are welcome as issues on the relevant repository.
+If you run into a bug or have ideas, please open an issue on any repo.
