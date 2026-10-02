@@ -4,7 +4,7 @@ I build tools that keep AI coding agents in check: the boring checks that stop a
 
 ## Reflex Control
 
-Reflex Control is my main project: a Rust CLI that plugs into Claude Code, Cursor and Codex CLI as a hook (more agents on main).
+Reflex Control is my main project: a Rust CLI that plugs into Claude Code, Cursor, Codex CLI, OpenCode, Kilo Code, Cline and pi as a hook.
 - Blocks writes to files you protect (like `.env` or `secrets/**`).
 - Asks before risky shell commands (like a force push).
 - Runs your tests at the end of a turn when the agent says it is done, sending failures back to the agent a limited number of times.
