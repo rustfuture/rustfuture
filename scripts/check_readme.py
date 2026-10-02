@@ -4,6 +4,7 @@ import json
 import os
 from pathlib import Path
 import re
+import struct
 from urllib.parse import quote, urlparse
 from urllib.request import Request, urlopen
 
@@ -41,7 +42,20 @@ def headings(text):
 def main():
     readme = Path(__file__).resolve().parents[1] / "README.md"
     text = readme.read_text(encoding="utf-8")
-    urls = sorted(set(re.findall(r"\]\((https://[^)]+)\)", text)))
+    urls = sorted(set(re.findall(r"\]\((https://[^)]+)\)", text) + re.findall(r'href="(https://[^"]+)"', text)))
+    images = re.findall(r'<img\s+[^>]*src="([^"]+)"', text)
+    if len(images) != 9 or len(set(images)) != 9:
+        raise ValueError("Profile must contain nine distinct project images")
+    for image in images:
+        path = (readme.parent / image).resolve()
+        if not path.is_relative_to(readme.parent.resolve()):
+            raise ValueError(f"Image is outside the repository: {image}")
+        blob = path.read_bytes()
+        if blob[:8] != b"\x89PNG\r\n\x1a\n" or blob[12:16] != b"IHDR":
+            raise ValueError(f"Image is not a PNG: {image}")
+        if struct.unpack(">II", blob[16:24]) != (1280, 640):
+            raise ValueError(f"Unexpected image dimensions: {image}")
+        print("PASS image", image)
     if not urls:
         raise ValueError("README has no project links")
     repos = set()

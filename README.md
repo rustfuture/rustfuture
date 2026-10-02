@@ -4,6 +4,24 @@ I build tools for coding workflows and local system inspection, and run small mo
 
 These are experimental projects. Each repository documents its run instructions, tests and limitations.
 
+<table>
+<tr>
+<td width="33%"><a href="https://github.com/rustfuture/reflex-control"><img src="assets/projects/reflex-control.png" alt="reflex-control project overview" width="280"></a></td>
+<td width="33%"><a href="https://github.com/rustfuture/rust-agent-runtime"><img src="assets/projects/rust-agent-runtime.png" alt="rust-agent-runtime project overview" width="280"></a></td>
+<td width="33%"><a href="https://github.com/rustfuture/repository-intelligence"><img src="assets/projects/repository-intelligence.png" alt="repository-intelligence project overview" width="280"></a></td>
+</tr>
+<tr>
+<td width="33%"><a href="https://github.com/rustfuture/rsi-experimental-framework"><img src="assets/projects/rsi-experimental-framework.png" alt="rsi-experimental-framework project overview" width="280"></a></td>
+<td width="33%"><a href="https://github.com/rustfuture/rlt-rsi-experiment"><img src="assets/projects/rlt-rsi-experiment.png" alt="rlt-rsi-experiment project overview" width="280"></a></td>
+<td width="33%"><a href="https://github.com/rustfuture/model-adaptation-lab"><img src="assets/projects/model-adaptation-lab.png" alt="model-adaptation-lab project overview" width="280"></a></td>
+</tr>
+<tr>
+<td width="33%"><a href="https://github.com/rustfuture/deltasafe"><img src="assets/projects/deltasafe.png" alt="deltasafe project overview" width="280"></a></td>
+<td width="33%"><a href="https://github.com/rustfuture/grainx"><img src="assets/projects/grainx.png" alt="grainx project overview" width="280"></a></td>
+<td width="33%"><a href="https://github.com/rustfuture/RustHound"><img src="assets/projects/RustHound.png" alt="RustHound project overview" width="280"></a></td>
+</tr>
+</table>
+
 ## Coding tools
 
 ### [Reflex Control](https://github.com/rustfuture/reflex-control)
