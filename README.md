@@ -6,19 +6,19 @@ These are experimental projects. Each repository documents its run instructions,
 
 <table>
 <tr>
-<td width="33%"><a href="https://github.com/rustfuture/reflex-control"><img src="assets/projects/reflex-control.png" alt="reflex-control project overview" width="280"></a></td>
-<td width="33%"><a href="https://github.com/rustfuture/rust-agent-runtime"><img src="assets/projects/rust-agent-runtime.png" alt="rust-agent-runtime project overview" width="280"></a></td>
-<td width="33%"><a href="https://github.com/rustfuture/repository-intelligence"><img src="assets/projects/repository-intelligence.png" alt="repository-intelligence project overview" width="280"></a></td>
+<td width="33%"><a href="https://github.com/rustfuture/reflex-control"><img src="assets/projects/reflex-control.png" alt="Reflex Control decides whether an AI task can finish on its own, retry, or escalate to an expensive reasoning model." width="280"></a></td>
+<td width="33%"><a href="https://github.com/rustfuture/rust-agent-runtime"><img src="assets/projects/rust-agent-runtime.png" alt="Rust Agent Runtime executes automated coding tasks using language models while enforcing execution timeouts, command restrictions, and verification tests." width="280"></a></td>
+<td width="33%"><a href="https://github.com/rustfuture/repository-intelligence"><img src="assets/projects/repository-intelligence.png" alt="Repository Intelligence searches local code and returns verbatim source lines for a question instead of generating prose; relevance is not guaranteed." width="280"></a></td>
 </tr>
 <tr>
-<td width="33%"><a href="https://github.com/rustfuture/rsi-experimental-framework"><img src="assets/projects/rsi-experimental-framework.png" alt="rsi-experimental-framework project overview" width="280"></a></td>
-<td width="33%"><a href="https://github.com/rustfuture/rlt-rsi-experiment"><img src="assets/projects/rlt-rsi-experiment.png" alt="rlt-rsi-experiment project overview" width="280"></a></td>
-<td width="33%"><a href="https://github.com/rustfuture/model-adaptation-lab"><img src="assets/projects/model-adaptation-lab.png" alt="model-adaptation-lab project overview" width="280"></a></td>
+<td width="33%"><a href="https://github.com/rustfuture/rsi-experimental-framework"><img src="assets/projects/rsi-experimental-framework.png" alt="This software tests an iterative propose, validate and select loop that improves keyword rules for text classification on a small synthetic dataset." width="280"></a></td>
+<td width="33%"><a href="https://github.com/rustfuture/rlt-rsi-experiment"><img src="assets/projects/rlt-rsi-experiment.png" alt="This project trains and compares computer models that reuse layers to classify whether an on/off sequence contains an odd or even number of on values." width="280"></a></td>
+<td width="33%"><a href="https://github.com/rustfuture/model-adaptation-lab"><img src="assets/projects/model-adaptation-lab.png" alt="This software tests whether LoRA fine-tuning helps one small model (Qwen2.5-Coder-1.5B) explain Rust compiler errors, using a 12-record dataset." width="280"></a></td>
 </tr>
 <tr>
-<td width="33%"><a href="https://github.com/rustfuture/deltasafe"><img src="assets/projects/deltasafe.png" alt="deltasafe project overview" width="280"></a></td>
-<td width="33%"><a href="https://github.com/rustfuture/grainx"><img src="assets/projects/grainx.png" alt="grainx project overview" width="280"></a></td>
-<td width="33%"><a href="https://github.com/rustfuture/RustHound"><img src="assets/projects/RustHound.png" alt="RustHound project overview" width="280"></a></td>
+<td width="33%"><a href="https://github.com/rustfuture/deltasafe"><img src="assets/projects/deltasafe.png" alt="deltasafe sends files between computers on the same local network and checks that each file arrived unchanged." width="280"></a></td>
+<td width="33%"><a href="https://github.com/rustfuture/grainx"><img src="assets/projects/grainx.png" alt="grainx shows live computer and process activity in a terminal and can share those readings over a local web connection." width="280"></a></td>
+<td width="33%"><a href="https://github.com/rustfuture/RustHound"><img src="assets/projects/RustHound.png" alt="RustHound reads log files and reports lines that match rules or unusual activity." width="280"></a></td>
 </tr>
 </table>
 
