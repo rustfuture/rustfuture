@@ -1,24 +1,26 @@
 # rustfuture
 
-I build tools for coding workflows and local system inspection, and run small model experiments in Rust and Python.
+I build tools and guardrails for AI coding agents and small local Rust utilities, and run model experiments in Rust and Python.
 
 These are experimental projects. Each repository documents its run instructions, tests and limitations.
+
+Currently: safety gates for coding agents. Reflex Control 0.4.0 hooks into Claude Code, Cursor, Codex CLI and git pre-commit; adapters for OpenCode, Kilo Code, Cline and pi are on `main`.
+
+Try Reflex Control without installing Rust (macOS or Linux):
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/rustfuture/reflex-control/main/install.sh | sh
+export PATH="$HOME/.local/bin:$PATH"
+reflex demo verifier-gate
+```
+
+On Windows, use the [PowerShell installer](https://github.com/rustfuture/reflex-control/blob/main/install.ps1).
 
 <table>
 <tr>
 <td width="33%"><a href="https://github.com/rustfuture/reflex-control"><img src="assets/projects/reflex-control.png" alt="Reflex Control decides whether an AI task can finish on its own, retry, or escalate to an expensive reasoning model." width="280"></a></td>
 <td width="33%"><a href="https://github.com/rustfuture/rust-agent-runtime"><img src="assets/projects/rust-agent-runtime.png" alt="Rust Agent Runtime executes automated coding tasks using language models while enforcing execution timeouts, command restrictions, and verification tests." width="280"></a></td>
 <td width="33%"><a href="https://github.com/rustfuture/repository-intelligence"><img src="assets/projects/repository-intelligence.png" alt="Repository Intelligence searches local code and returns verbatim source lines for a question instead of generating prose; relevance is not guaranteed." width="280"></a></td>
-</tr>
-<tr>
-<td width="33%"><a href="https://github.com/rustfuture/rsi-experimental-framework"><img src="assets/projects/rsi-experimental-framework.png" alt="This software tests an iterative propose, validate and select loop that improves keyword rules for text classification on a small synthetic dataset." width="280"></a></td>
-<td width="33%"><a href="https://github.com/rustfuture/rlt-rsi-experiment"><img src="assets/projects/rlt-rsi-experiment.png" alt="This project trains and compares computer models that reuse layers to classify whether an on/off sequence contains an odd or even number of on values." width="280"></a></td>
-<td width="33%"><a href="https://github.com/rustfuture/model-adaptation-lab"><img src="assets/projects/model-adaptation-lab.png" alt="This software tests whether LoRA fine-tuning helps one small model (Qwen2.5-Coder-1.5B) explain Rust compiler errors, using a 12-record dataset." width="280"></a></td>
-</tr>
-<tr>
-<td width="33%"><a href="https://github.com/rustfuture/deltasafe"><img src="assets/projects/deltasafe.png" alt="deltasafe sends files between computers on the same local network and checks that each file arrived unchanged." width="280"></a></td>
-<td width="33%"><a href="https://github.com/rustfuture/grainx"><img src="assets/projects/grainx.png" alt="grainx shows live computer and process activity in a terminal and can share those readings over a local web connection." width="280"></a></td>
-<td width="33%"><a href="https://github.com/rustfuture/RustHound"><img src="assets/projects/RustHound.png" alt="RustHound reads log files and reports lines that match rules or unusual activity." width="280"></a></td>
 </tr>
 </table>
 
@@ -27,6 +29,8 @@ These are experimental projects. Each repository documents its run instructions,
 ### [Reflex Control](https://github.com/rustfuture/reflex-control)
 
 Decides when an automated coding step should finish, retry or escalate, using local checks and a safety veto.
+
+![Reflex Control mapping four task results to Accept, Retry and Escalate](assets/demo/reflex-runtime-gate.gif)
 
 [Run the demo](https://github.com/rustfuture/reflex-control#quick-start) · [Design](https://github.com/rustfuture/reflex-control/blob/main/docs/architecture.md) · [Evaluation](https://github.com/rustfuture/reflex-control#evaluation-benchmark--measured-results)
 
