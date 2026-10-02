@@ -1,63 +1,61 @@
 # rustfuture
 
-**Applied LLM experiments and agent tooling, in Python and Rust.**
+I build tools for coding workflows and local system inspection, and run small model experiments in Rust and Python.
 
-Everything here is experimental: research prototypes and small tools, tested on synthetic or small datasets, not production-validated. Each repo states its limits, and negative results stay in the record.
+These are experimental projects. Each repository documents its run instructions, tests and limitations.
 
-## Projects
+<table>
+<tr>
+<td width="33%"><a href="https://github.com/rustfuture/reflex-control"><img src="assets/projects/reflex-control.png" alt="reflex-control project overview" width="280"></a></td>
+<td width="33%"><a href="https://github.com/rustfuture/rust-agent-runtime"><img src="assets/projects/rust-agent-runtime.png" alt="rust-agent-runtime project overview" width="280"></a></td>
+<td width="33%"><a href="https://github.com/rustfuture/repository-intelligence"><img src="assets/projects/repository-intelligence.png" alt="repository-intelligence project overview" width="280"></a></td>
+</tr>
+<tr>
+<td width="33%"><a href="https://github.com/rustfuture/rsi-experimental-framework"><img src="assets/projects/rsi-experimental-framework.png" alt="rsi-experimental-framework project overview" width="280"></a></td>
+<td width="33%"><a href="https://github.com/rustfuture/rlt-rsi-experiment"><img src="assets/projects/rlt-rsi-experiment.png" alt="rlt-rsi-experiment project overview" width="280"></a></td>
+<td width="33%"><a href="https://github.com/rustfuture/model-adaptation-lab"><img src="assets/projects/model-adaptation-lab.png" alt="model-adaptation-lab project overview" width="280"></a></td>
+</tr>
+<tr>
+<td width="33%"><a href="https://github.com/rustfuture/deltasafe"><img src="assets/projects/deltasafe.png" alt="deltasafe project overview" width="280"></a></td>
+<td width="33%"><a href="https://github.com/rustfuture/grainx"><img src="assets/projects/grainx.png" alt="grainx project overview" width="280"></a></td>
+<td width="33%"><a href="https://github.com/rustfuture/RustHound"><img src="assets/projects/RustHound.png" alt="RustHound project overview" width="280"></a></td>
+</tr>
+</table>
+
+## Coding tools
 
 ### [Reflex Control](https://github.com/rustfuture/reflex-control)
 
-Decides whether an AI task can finish on its own, retry, or escalate to a more expensive model. It combines fast local checks with a safety veto for risky actions. In one run on a synthetic 100-task held-out set it missed none of the 31 tasks that needed escalation (the strongest baseline missed 3) and made no false accepts, while handling 66% of tasks autonomously.
+Decides when an automated coding step should finish, retry or escalate, using local checks and a safety veto.
 
-[Quick Start](https://github.com/rustfuture/reflex-control#quick-start) · [Architecture](https://github.com/rustfuture/reflex-control#workspace-architecture) · [Evaluation](https://github.com/rustfuture/reflex-control#evaluation-benchmark--measured-results) · [Examples](https://github.com/rustfuture/reflex-control#runnable-examples)
+[Run the demo](https://github.com/rustfuture/reflex-control#quick-start) · [Design](https://github.com/rustfuture/reflex-control/blob/main/docs/architecture.md) · [Evaluation](https://github.com/rustfuture/reflex-control#evaluation-benchmark--measured-results)
 
 ### [Rust Agent Runtime](https://github.com/rustfuture/rust-agent-runtime)
 
-Runs automated coding tasks with language models under timeouts, command allowlists, and required verification tests. Task state is rebuilt from an append-only event log, so a crashed run can resume.
+Runs coding tasks with command allowlists, timeouts and required verification; task state is recorded in an append-only log.
 
-[Quick Start](https://github.com/rustfuture/rust-agent-runtime#quick-start) · [Architecture](https://github.com/rustfuture/rust-agent-runtime/blob/main/docs/architecture.md) · [Evaluation Evidence](https://github.com/rustfuture/rust-agent-runtime#evaluation-evidence)
+[Try the task lifecycle](https://github.com/rustfuture/rust-agent-runtime#quick-start) · [Design](https://github.com/rustfuture/rust-agent-runtime/blob/main/docs/architecture.md) · [Evaluation](https://github.com/rustfuture/rust-agent-runtime#evaluation-evidence)
 
 ### [Repository Intelligence](https://github.com/rustfuture/repository-intelligence)
 
-Searches local code and returns verbatim source lines for a question instead of generating prose. Every accepted quote matched the source, but relevance is not guaranteed: across three recorded runs of a 42-question set, false accepts ranged from 8 to 12. Supports text, hash-embedding, and local neural-model search over a saved index.
+Searches local code and returns exact source lines. Quotes match the source; relevance is not guaranteed.
 
-[Architecture](https://github.com/rustfuture/repository-intelligence#architecture) · [Results](https://github.com/rustfuture/repository-intelligence#measured-results) · [Reproducibility](https://github.com/rustfuture/repository-intelligence#reproducibility)
+[Try offline search](https://github.com/rustfuture/repository-intelligence#quick-start) · [Design](https://github.com/rustfuture/repository-intelligence/blob/main/docs/architecture.md) · [Results](https://github.com/rustfuture/repository-intelligence#measured-results)
 
-## Research experiments
+## Model experiments
 
-Small, controlled experiments on synthetic or tiny datasets. Results are reported as found, including null and negative ones.
+| Project | Question and recorded scope | Explore |
+|---|---|---|
+| [RSI Experimental Framework](https://github.com/rustfuture/rsi-experimental-framework) | Propose and select keyword-rule changes on synthetic text; held-out data is scored after selection. | [Run](https://github.com/rustfuture/rsi-experimental-framework#quick-start) · [Results](https://github.com/rustfuture/rsi-experimental-framework#measured-results) |
+| [RLT-RSI Experiment](https://github.com/rustfuture/rlt-rsi-experiment) | Test repeated model layers on sequence parity; committed runs stayed near chance. | [Run](https://github.com/rustfuture/rlt-rsi-experiment#quick-start) · [Results](https://github.com/rustfuture/rlt-rsi-experiment#what-the-committed-results-show) |
+| [Model Adaptation Lab](https://github.com/rustfuture/model-adaptation-lab) | Test LoRA for Rust compiler explanations; the recorded run showed no gain. | [Run](https://github.com/rustfuture/model-adaptation-lab#quick-start) · [Report](https://github.com/rustfuture/model-adaptation-lab/blob/main/reports/negative-result.md) |
 
-### [RSI Experimental Framework](https://github.com/rustfuture/rsi-experimental-framework)
+## Local Rust tools
 
-Tests an iterative propose, validate and select loop that improves keyword rules for text classification on a small synthetic dataset (32 sentences). Held-out data is scored only after selection ends. It makes no claim beyond that toy setup.
+| Tool | First use |
+|---|---|
+| [deltasafe](https://github.com/rustfuture/deltasafe) | [Transfer a file between two local terminals](https://github.com/rustfuture/deltasafe#quick-start); tested over loopback. |
+| [grainx](https://github.com/rustfuture/grainx) | [Open a system dashboard or export JSON/CSV](https://github.com/rustfuture/grainx#quick-start). |
+| [RustHound](https://github.com/rustfuture/RustHound) | [Analyze the bundled sample log](https://github.com/rustfuture/RustHound#quick-start). |
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rustfuture/rsi-experimental-framework/blob/main/notebooks/rsi_open_weight_colab.ipynb) · [Experiment Status](https://github.com/rustfuture/rsi-experimental-framework#experiment-status) · [Results](https://github.com/rustfuture/rsi-experimental-framework#measured-results)
-
-### [RLT-RSI Experiment](https://github.com/rustfuture/rlt-rsi-experiment)
-
-Compares standard models with models that reuse one layer several times, on deciding whether a binary sequence has an odd or even number of ones. Checks whether training on short sequences carries over to longer ones, and includes a bounded search over how many times the layer repeats. In the committed runs none of the models learns the task: accuracy stays near chance.
-
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rustfuture/rlt-rsi-experiment/blob/main/notebooks/rlt_rsi_colab.ipynb) · [Research questions](https://github.com/rustfuture/rlt-rsi-experiment/blob/main/DESIGN.md#research-questions) · [Iterative adaptation](https://github.com/rustfuture/rlt-rsi-experiment#rsi-style-iterative-adaptation)
-
-### [Model Adaptation Lab](https://github.com/rustfuture/model-adaptation-lab)
-
-Tests whether LoRA fine-tuning on Apple Silicon helps one small model (Qwen2.5-Coder-1.5B) explain Rust compiler errors, using a 12-record dataset and one rule-based baseline. The single recorded run showed no gain, and the hand-written rule baseline scored higher on exact strategy match (1/3 vs 0/3); that negative result is kept.
-
-[![Open validation in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rustfuture/model-adaptation-lab/blob/main/notebooks/validation_colab.ipynb) · [Negative-result report](https://github.com/rustfuture/model-adaptation-lab/blob/main/reports/negative-result.md) · [Correctness levels](https://github.com/rustfuture/model-adaptation-lab#correctness-levels)
-
-## Smaller Rust tools
-
-- [deltasafe](https://github.com/rustfuture/deltasafe): sends files over a local network and rejects any file whose checksum does not match; tested on loopback only.
-- [grainx](https://github.com/rustfuture/grainx): terminal dashboard for CPU, memory, disk, network, and processes, with a local HTTP metrics endpoint.
-- [RustHound](https://github.com/rustfuture/RustHound): reads log files and reports lines that match rules, bursts of repeated errors, or event sequences.
-
-<a href="https://github.com/rustfuture/RustHound#quick-start"><img src="https://github.com/rustfuture/RustHound/raw/main/docs/images/sample-run.svg" alt="RustHound console output on the bundled sample log: eight CRITICAL and HIGH detections" width="720"></a>
-
-## Approach
-
-Experiments ship with committed artifacts and the commands that reproduce them. Boundaries are stated explicitly, and inconclusive results are kept when they are part of the evidence.
-
-## Feedback
-
-Questions and suggestions are welcome as issues or discussions on the relevant repository.
+Questions and suggestions are welcome as issues on the relevant repository.
