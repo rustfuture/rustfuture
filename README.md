@@ -5,6 +5,7 @@ I build tools that keep AI coding agents in check: the boring checks that stop a
 ## Reflex Control
 
 Reflex Control is my main project: a Rust CLI that plugs into Claude Code, Cursor, Codex CLI, OpenCode, Kilo Code, Cline and pi as a hook.
+So far it has run live in a real Claude Code session; the adapters for the other agents are checked against their source or docs but not yet run in a real session.
 - Blocks writes to files you protect (like `.env` or `secrets/**`).
 - Asks before risky shell commands (like a force push).
 - Runs your tests at the end of a turn when the agent says it is done, sending failures back to the agent a limited number of times.
@@ -29,10 +30,37 @@ Run `reflex install` to launch the interactive setup wizard.
 - [deltasafe](https://github.com/rustfuture/deltasafe): sends files between computers on the same local network and checks that each file arrived unchanged.
 - [RustHound](https://github.com/rustfuture/RustHound): reads log files and reports lines that match rules or look unusual.
 
+Each of them has a prebuilt CLI on its release page, with an install script in its README.
+
+<details>
+<summary>See them run</summary>
+
+**Rust Agent Runtime** finishing a task with a scripted model:
+
+![Rust Agent Runtime demo](assets/demo/rust-agent-runtime.gif)
+
+**Repository Intelligence** answering a question offline with source lines:
+
+![Repository Intelligence offline search](assets/demo/repository-intelligence.gif)
+
+**grainx** dashboard:
+
+![grainx dashboard](assets/demo/grainx.gif)
+
+**deltasafe** sending a folder between two terminals:
+
+![deltasafe transfer](assets/demo/deltasafe.gif)
+
+**RustHound** scanning the bundled sample log:
+
+![RustHound sample run](assets/demo/rusthound.svg)
+
+</details>
+
 ## Experiments, including the ones that didn't work
 
 - [Model Adaptation Lab](https://github.com/rustfuture/model-adaptation-lab): I tried LoRA fine-tuning on a small model (Qwen2.5-Coder-1.5B) to explain Rust compiler errors; the recorded run showed no gain ([report](https://github.com/rustfuture/model-adaptation-lab/blob/main/reports/negative-result.md)).
 - [RLT-RSI Experiment](https://github.com/rustfuture/rlt-rsi-experiment): I tested reusing model layers in a loop on a sequence parity task; the runs stayed at chance level.
-- [RSI Experimental Framework](https://github.com/rustfuture/rsi-experimental-framework): a loop that proposes and keeps keyword rules for text classification on a small synthetic dataset.
+- [RSI Experimental Framework](https://github.com/rustfuture/rsi-experimental-framework): a loop that proposes and keeps keyword rules for text classification on a small synthetic dataset; in the recorded run held-out accuracy went from 3/8 to 8/8 (+0.29 on average over 3 seeds), on a toy dataset rather than real-world data.
 
 If you run into a bug or have ideas, please open an issue on any repo.
